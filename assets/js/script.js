@@ -2,7 +2,8 @@
 var now = moment().format('dddd, h a');
 $('#currentDay').append(now);
 // hardcoded array for military time
-hardCode = [9, 10, 11, 12, 13, 14, 15, 16, 17]
+hardCode = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+saveTask = ['','','','','','','','',''];
 
 //absolute wizardry 
 // for loop that iterates 9 times 
@@ -13,29 +14,42 @@ for (var i = 0; i < hardCode.length; i++) {
     var row = $('<div>');
     row.addClass('row');
     $('#timeBlock').append(row);
+
     // makes the first colum using the hardcoded array 
     var colTime = $('<div>');
     colTime.text(time + ':00')
     colTime.addClass('col-1 hour')
     $(row).append(colTime);
-    // makes the input colum to put stuff in  
+
+    // makes the input column to put stuff in 
     var colInput = $('<div>');
     colInput.addClass('col-10')
     colInput.attr('id', 'input' + i);
     $(row).append(colInput);
-    // makes a text box could use improvement but the css specifies textarea
-    var textArea = $('<textarea>');
-    textArea.attr('id', 'task' + i);
-    $('#input' + i).append(textArea);
-    // makes the button colum
+
+    // makes the button column
     var colButton = $('<div>');
     colButton.addClass('col-1 saveBtn')
     $(row).append(colButton);
+
+    // makes a text box could use improvement but the css specifies textarea
+    // mostly formatting stuff
+    var textArea = $('<textarea>');
+    textArea.addClass('col-12')
+    textArea.attr('id', 'task' + i);
+    textArea.attr('type', 'text')
+
+    $('#input' + i).append(textArea);
     // makes the button icon could use improvement
+    // mostly formatting stuff
     var buttonSave = $('<i>');
     buttonSave.addClass('fas fa-save');
+    buttonSave.attr('id', 'btn' + i)
     $(colButton).append(buttonSave);
-    // all the moment stuff goes here 
+    // console log out a button click to see if you can make it work in the loop
+
+
+    // this is the 'moment' I blame David Lovett 
     var then = moment().hour(time);
     // this kept me reading arcane documentation up past midnight
     var future = moment().isBefore(then);
@@ -52,25 +66,85 @@ for (var i = 0; i < hardCode.length; i++) {
         $('#input' + i).addClass('past');
     }
 };
-// all this is borked and needs serious work 
+// this works, but could be better 
 
-var getData = JSON.parse(localStorage.getItem('storedData')) || [];
-
-function displayTasks(getData) {
-
-    var displayText = $('<p>');
-    displayText.text(getData[0]);
-    $('#task').append(displayText)
-}
-
-// returns the value at id task to console and sent to localStorage
-$("#btn1").on('click', function (event) {
-    event.preventDefault();
-    var getTask = $('#task').val().trim();
-    getData.push(getTask);
-    displayTasks(getData);
-    localStorage.setItem('task', JSON.stringify(getData));
-    $('#task').val('');
+$("#btn0").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task0').val();
+    saveTask.splice(0,1, getTask);
+    $('#task0').val('');
+    var writeTask = saveTask[0];
+    $('#task0').val(writeTask);
 });
 
-displayTasks(getData);
+$("#btn1").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task1').val();
+    saveTask.splice(1,1, getTask);
+    $('#task1').val('');
+    var writeTask = saveTask[1];
+    $('#task1').val(writeTask);
+});
+
+$("#btn2").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task2').val();
+    saveTask.splice(2,1, getTask);
+    $('#task2').val('');
+    var writeTask = saveTask[2];
+    $('#task2').val(writeTask);
+});
+
+$("#btn3").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task3').val();
+    saveTask.splice(3,1, getTask);
+    $('#task3').val('');
+    var writeTask = saveTask[3];
+    $('#task3').val(writeTask);
+});
+
+$("#btn4").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task4').val();
+    saveTask.splice(4,1, getTask);
+    $('#task4').val('');
+    var writeTask = saveTask[4];
+    $('#task4').val(writeTask);
+});
+
+$("#btn5").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task5').val();
+    saveTask.splice(5,1, getTask);
+    $('#task5').val('');
+    var writeTask = saveTask[5];
+    $('#task5').val(writeTask);
+});
+
+$("#btn6").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task6').val();
+    saveTask.splice(6,1, getTask);
+    $('#task6').val('');
+    var writeTask = saveTask[6];
+    $('#task6').val(writeTask);
+});
+
+$("#btn7").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task7').val();
+    saveTask.splice(7,1, getTask);
+    $('#task7').val('');
+    var writeTask = saveTask[7];
+    $('#task7').val(writeTask);
+});
+
+$("#btn8").on('click', function (event) {
+    event.preventDefault()
+    var getTask = $('#task8').val();
+    saveTask.splice(8,1, getTask);
+    $('#task8').val('');
+    var writeTask = saveTask[8];
+    $('#task8').val(writeTask);
+});
